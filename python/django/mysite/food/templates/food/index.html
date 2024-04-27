@@ -1,7 +1,24 @@
-{% for item in item_list %}
-    <ul>
-        <li>
-            <a href="{% url 'food:detail' item.id %}"> {{ item.id }} -- {{ item.item_name }} </a>
-        </li>
-    </ul>
-{% endfor %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'food/style.css' %}">
+    </head>
+    <body>        
+        {% for item in item_list %}
+
+        <ul>
+            <li>
+
+                    <a href="{% url 'food:detail' item.id %}"> {{ item.id }} -- {{ item.item_name }} </a>
+            </li>
+        </ul>
+    {% endfor %}
+    </body>
+</html>
