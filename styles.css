@@ -15,55 +15,17 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#sobre-mi .container {
-    display: flex;
-    align-items: center;
-}
-
-#sobre-mi .foto {
-    flex: 1;
-    /* Ajusta el tamaño de la imagen según necesites */
-    max-width: 50%;
-}
-
-#sobre-mi .content {
-    flex: 1;
-    padding-left: 20px; /* Añade un poco de espacio entre la foto y el texto */
-}
-
-#educacion .container {
-    display: flex;
-    justify-content: space-between;
-}
-
-#educacion .content {
-    flex: 1;
-    /* Ajusta el padding según necesites */
-    padding-right: 20px;
-}
-
-#educacion .collage {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    max-width: 50%;
-}
-
-#educacion .collage img {
-    width: calc(50% - 10px); /* Ajusta el tamaño de las imágenes */
-    margin: 5px;
-    height: auto;
-}
-
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Flex wrap to handle overflow on smaller screens */
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 40px;
+    margin: 0 20px; /* Adjust margin for smaller screens */
 }
 
 nav ul li a {
@@ -85,7 +47,7 @@ section {
 
 .intro {
     background: #34495e;
-    padding: 120px 50px;
+    padding: 60px 20px; /* Adjust padding for smaller screens */
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -111,16 +73,90 @@ footer {
     bottom: 0;
 }
 
+/* Sección Sobre Mí */
+#sobre-mi .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Flex wrap for smaller screens */
+}
 
+#sobre-mi .foto {
+    flex: 1;
+    max-width: 100%; /* Ensure image scales on smaller screens */
+    text-align: center;
+}
 
-/* Responsivo */
+#sobre-mi .foto img {
+    max-width: 100%;
+    height: auto; /* Ensure image maintains aspect ratio */
+}
+
+#sobre-mi .content {
+    flex: 1;
+    padding-left: 20px; /* Añade un poco de espacio entre la foto y el texto */
+}
+
+/* Sección Educación */
+#educacion .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Flex wrap for smaller screens */
+}
+
+#educacion .content {
+    flex: 1;
+    padding-right: 20px; /* Ajusta el padding según necesites */
+}
+
+#educacion .collage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center images on smaller screens */
+    max-width: 100%;
+}
+
+#educacion .collage img {
+    width: calc(50% - 10px); /* Ajusta el tamaño de las imágenes */
+    margin: 5px;
+    height: auto;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack navigation items vertically */
+        align-items: center;
+    }
+
     nav ul li {
-        display: block;
-        margin: 10px 0;
+        margin: 10px 0; /* Adjust margin for stacked items */
+    }
+
+    #sobre-mi .container,
+    #educacion .container {
+        flex-direction: column; /* Stack sections vertically */
+        align-items: center;
+    }
+
+    #educacion .collage img {
+        width: calc(100% - 10px); /* Full width images on smaller screens */
+    }
+
+    #sobre-mi .content {
+        padding-left: 0; /* Remove left padding on smaller screens */
     }
 
     footer {
-        position: static;
+        position: static; /* Make footer static on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .intro {
+        padding: 40px 20px; /* Adjust padding for smaller screens */
+    }
+
+    .content {
+        padding: 30px 20px; /* Adjust padding for smaller screens */
     }
 }
