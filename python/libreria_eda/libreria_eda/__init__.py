@@ -17,6 +17,7 @@ def analyze_data(df):
         - Basic dataset information
         - Missing values information
         - Column-wise missing values
+        - Rows with missing values
         - General information
     """
     # Basic dataset information
@@ -41,6 +42,14 @@ def analyze_data(df):
         'Percentage Missing': (df.isnull().sum() / len(df)) * 100
     })
     
+    # Rows with missing values
+    rows_with_missing = df[df.isnull().any(axis=1)]
+    rows_missing_info = {
+        'Number of rows with missing values': len(rows_with_missing),
+        'Percentage of rows with missing values': f"{(len(rows_with_missing) / len(df)) * 100:.2f}%",
+        'Rows with missing values': rows_with_missing.index.tolist()
+    }
+    
     # General information
     general_info = {
         'Data Types': df.dtypes,
@@ -53,6 +62,7 @@ def analyze_data(df):
         'Dataset Information': dataset_info,
         'Missing Values Summary': missing_values_info,
         'Column-wise Missing Values': column_missing_info,
+        'Rows with Missing Values': rows_missing_info,
         'General Information': general_info
     }
     
